@@ -77,13 +77,13 @@
 
 					<div class="col-sm-4 col-xs-12 mg_bt_10">
 						<small>&nbsp;</small>
-						<input type="text" id="yq_tax" name="yq_tax" placeholder="YQ Tax" title="YQ Tax" onchange="calculate_total_amount(this.id);validate_balance(this.id)">
+						<input type="text" id="yq_tax" name="yq_tax" placeholder="Airline Taxes" title="Airline Taxes" onchange="calculate_total_amount(this.id);validate_balance(this.id)">
 
 					</div>
 
 					<div class="col-sm-4 col-xs-12 mg_bt_10">
 					<small>&nbsp;</small>
-						<input type="text" id="other_taxes" name="other_taxes" placeholder="Other Taxes" title="Other Taxes" onchange="calculate_total_amount(this.id);validate_balance(this.id)">
+						<input type="text" id="other_taxes" name="other_taxes" placeholder="Airlines Conveniency" title="Airlines Conveniency" onchange="calculate_total_amount(this.id);validate_balance(this.id)">
 
 					</div>
 

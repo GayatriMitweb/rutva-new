@@ -103,11 +103,11 @@
 					 <div class="col-md-3 col-sm-6 col-xs-12 right_border_none_sm_xs" style="border-right: 1px solid #ddd">
 						 <span class="main_block">
 		                  <i class="fa fa-angle-double-right cost_arrow" aria-hidden="true"></i>
-		                  <?php echo "<label>Other Taxes<em>:</em></label> ".$sq_ticket['other_taxes']; ?>
+		                  <?php echo "<label>Airlines Conveniency<em>:</em></label> ".$sq_ticket['other_taxes']; ?>
 		                </span>	
 						<span class="main_block">
 		                  <i class="fa fa-angle-double-right cost_arrow" aria-hidden="true"></i>
-		                  <?php echo "<label>YQ Tax<em>:</em></label> ".$sq_ticket['yq_tax']; ?>
+		                  <?php echo "<label>Airline Taxes<em>:</em></label> ".$sq_ticket['yq_tax']; ?>
 		                </span>	 
 		        		<span class="main_block">
 		        		  <i class="fa fa-angle-double-right cost_arrow" aria-hidden="true"></i>

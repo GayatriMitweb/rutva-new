@@ -60,11 +60,11 @@ if($sq_ticket_info['service_tax_markup'] !== 0.00 && $sq_ticket_info['service_ta
                         <span class="stat_content-amount pull-right" data-original-title="" title=""><?= $sq_ticket_info['basic_cost_discount'] ?></span>
                     </span>         
                     <span class="main_block content_span" data-original-title="" title="">                    
-                        <span class="stat_content-tilte pull-left" data-original-title="" title="">YQ Tax</span>
+                        <span class="stat_content-tilte pull-left" data-original-title="" title="">Airline Taxes</span>
                         <span class="stat_content-amount pull-right" data-original-title="" title=""><?= $sq_ticket_info['yq_tax'] ?></span>
                     </span>                   
                     <span class="main_block content_span" data-original-title="" title="">
-                        <span class="stat_content-tilte pull-left" data-original-title="" title="">Other Taxes</span>
+                        <span class="stat_content-tilte pull-left" data-original-title="" title="">Airlines Conveniency</span>
                         <span class="stat_content-amount pull-right" data-original-title="" title=""><?= $sq_ticket_info['other_taxes'] ?></span>
                     </span>  
                     <span class="main_block content_span" data-original-title="" title="">

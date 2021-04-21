@@ -126,12 +126,12 @@ $footer_data = array();
 		$voucher_name = "AIR TICKET VOUCHER";
 		$pass_url = BASE_URL."view/visa_passport_ticket/ticket/home/e_ticket.php?ticket_id=$row_ticket[ticket_id]&service_name=$voucher_name&invoice_date=$invoice_date";
 
-		$contact_no = $encrypt_decrypt->fnDecrypt($sq_customer_info['contact_no'], $secret_key);
+		$contact_no = ($sq_customer_info['contact_no'] == "") ? "" :  $encrypt_decrypt->fnDecrypt($sq_customer_info['contact_no'], $secret_key);
 		$temp_arr = array( "data" => array(
 			(int)(++$count),
 			get_ticket_booking_id($row_ticket['ticket_id'],$year),
 			$customer_name,
-			$contact_no,
+			utf8_encode($contact_no),
 			$row_ticket['type_of_tour'],
 			number_format($row_ticket['ticket_total_cost']+ $credit_card_charges,2),
 			$cancel_amt,

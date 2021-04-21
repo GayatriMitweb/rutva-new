@@ -697,7 +697,6 @@ function check_pdf_size(pdf_size, url, url1) {
 //Print
 function loadOtherPage(url) {
 	$('<iframe>').hide().attr('src', url).appendTo('body');
-	window.location.href= url;
 }
 
 function check_package_type(setup_package, module_name) {

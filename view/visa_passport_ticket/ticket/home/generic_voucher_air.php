@@ -318,7 +318,7 @@ $pdf->SetFont('Arial','',10);
 
 $pdf->SetXY(129, $y_pos);
 
-$pdf->MultiCell(40, 8, 'Other Taxes', 1);
+$pdf->MultiCell(40, 8, 'Airlines Conveniency', 1);
 
 
 

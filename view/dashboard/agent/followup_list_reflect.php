@@ -1,4 +1,3 @@
-
 <?php
 include_once("../../../model/model.php");
 $login_id = $_SESSION['login_id'];

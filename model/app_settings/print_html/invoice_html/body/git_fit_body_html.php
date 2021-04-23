@@ -45,8 +45,10 @@ $charge = ($credit_card_charges!='')?$credit_card_charges:0 ;
 
 if($service_name =='Package Invoice'){
   $sq_booking = mysql_fetch_assoc(mysql_query("select * from package_tour_booking_master where booking_id='$booking_id'"));
+  $tour_type = $sq_booking['tour_type']; 
 }else{
   $sq_booking = mysql_fetch_assoc(mysql_query("select * from tourwise_traveler_details where id='$booking_id'"));
+  $tour_type = ""; 
 }
 $total_discount = $sq_booking['total_discount'];
 $roundoff = $sq_booking['roundoff'];
@@ -162,7 +164,14 @@ if($app_invoice_format == "Advance"){include "../headers/advance_header_html.php
     </div>
   </div>
 </section>
-
+<?php
+if($service_name =='Package Invoice' && $tour_type == "International"){
+  $tcs_tax = $net_total * (0.05);
+}
+else{
+  $tcs_tax = 0;
+}
+?>
 <section class="print_sec main_block">
 
 <!-- invoice_receipt_body_calculation -->
@@ -174,7 +183,7 @@ if($app_invoice_format == "Advance"){include "../headers/advance_header_html.php
         <?php }else{ ?>
           <div class="col-md-6"><p class="border_lt"><span class="font_5">AMOUNT </span><span class="float_r"><?= $currency_code." ".($newBasic+$total_discount) ?></span></p></div>
         <?php } ?>
-        <div class="col-md-6"><p class="border_lt"><span class="font_5">TOTAL </span><span class="font_5 float_r"><?= $currency_code." ".number_format($net_total,2) ?></span></p></div>
+        <div class="col-md-6"><p class="border_lt"><span class="font_5">TOTAL </span><span class="font_5 float_r"><?= $currency_code." ".number_format($net_total+$tcs_tax,2) ?></span></p></div>
         <?php if($service_name =='Package Invoice'){ ?>
         <div class="col-md-6"><p class="border_lt"><span class="font_5">SERVICE CHARGE </span><span class="float_r"><?= $currency_code." ".$newSC ?></span></p></div>
         <?php }else{ ?>
@@ -185,7 +194,14 @@ if($app_invoice_format == "Advance"){include "../headers/advance_header_html.php
         <div class="col-md-6"><p class="border_lt"><span class="font_5">ADVANCED PAID </span><span class="font_5 float_r"><?= $currency_code." ".number_format($total_paid,2) ?></span></p></div> 
         <div class="col-md-6"><p class="border_lt"><span class="font_5">RoundOff</span><span class="float_r"><?= $currency_code." ".$roundoff ?></span></p></div>
         <div class="col-md-6"><p class="border_lt"><span class="font_5">CURRENT DUE </span><span class="font_5 float_r"><?= $currency_code." ".number_format($total_balance,2) ?></span></p></div>
-      </div>
+        <?php
+        if($service_name =='Package Invoice' && $tour_type == "International"){
+        ?>
+        <div class="col-md-6"><p class="border_lt"><span class="font_5">TCS(5%) </span><span class="float_r"><?= $currency_code." ".$tcs_tax ?></span></p></div>
+        <?php
+        }
+        ?>
+          </div>
     </div>
   </div>
 </section>

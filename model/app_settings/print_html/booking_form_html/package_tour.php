@@ -717,7 +717,7 @@ else{
         <div class="col-md-6">
           <div class="print_amount_block">
             <ul class="main_block no-pad text-right noType">
-              <li class="col-md-12 mg_tp_10 mg_bt_10 font_5"><span>TOTAL AMOUNT : </span><?php echo number_format($net_amount+$charge,2); ?></li>
+              <li class="col-md-12 mg_tp_10 mg_bt_10 font_5"><span>TOTAL AMOUNT : </span><?php echo number_format($net_amount+$tcs_tax+$charge,2); ?></li>
             </ul>
           </div>
         </div>

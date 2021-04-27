@@ -161,7 +161,7 @@ if($app_invoice_format == "Advance"){include "../headers/advance_header_html.php
       <div class="main_block inv_rece_calculation border_block">
         <div class="col-md-6"><p class="border_lt"><span class="font_5">AMOUNT </span><span class="float_r"><?php echo $currency_code." ".number_format($newBasic,2); ?></span></p></div>
         <div class="col-md-6"><p class="border_lt"><span class="font_5">TOTAL </span><span class="font_5 float_r"><?php echo $currency_code." ".number_format($net_amount1,2); ?></span></p></div>
-        <div class="col-md-6"><p class="border_lt"><span class="font_5">AIRLINE TAXES + AIRLINE CONVRNIENCY</span><span class="float_r"><?php echo $currency_code.' '.($sq_fields['other_taxes'] + $sq_fields['yq_tax']); ?></span></p></div>   
+        <div class="col-md-6"><p class="border_lt"><span class="font_5">AIRLINE TAXES + AIRLINE CONVENIENCY</span><span class="float_r"><?php echo $currency_code.' '.($sq_fields['other_taxes'] + $sq_fields['yq_tax']); ?></span></p></div>   
         <div class="col-md-6"><p class="border_lt"><span class="font_5">CREDIT CARD CHARGE </span><span class="float_r"><?= $currency_code." ".number_format($charge,2)?></span></p></div>  
         <div class="col-md-6"><p class="border_lt"><span class="font_5">SERVICE CHARGE </span><span class="float_r"><?php echo $currency_code." ".number_format($newSC,2); ?></span></p></div> 
         <div class="col-md-6"><p class="border_lt"><span class="font_5">ADVANCED PAID </span><span class="font_5 float_r"><?php echo $currency_code." ".number_format($total_paid,2); ?></span></p></div>  

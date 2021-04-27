@@ -21,7 +21,7 @@ $sq_quotation = mysql_fetch_assoc(mysql_query("select * from package_tour_quotat
 $package_booking_info = mysql_fetch_assoc(mysql_query("select *  from package_tour_booking_master where booking_id='$booking_id' "));
 $inclusions = ($package_booking_info['quotation_id'] == 0)?$package_booking_info['inclusions'] : $sq_quotation['inclusions'];
 $exclusions = ($package_booking_info['quotation_id'] == 0)?$package_booking_info['exclusions'] : $sq_quotation['exclusions'];
-
+$tour_type = $package_booking_info['tour_type']; 
 $tour_name = $package_booking_info['tour_name'];
 $from_date = date("d-m-Y", strtotime($package_booking_info['tour_from_date']));
 $to_date = date("d-m-Y", strtotime($package_booking_info['tour_to_date']));
@@ -105,6 +105,14 @@ if($bsmValues[0]->basic != ''){ //inclusive basic
 }else{
 
 }
+
+if($tour_type == "International"){
+  $tcs_tax = $net_amount * (0.05);
+  
+}
+else{
+  $tcs_tax = 0;
+}
 ?>
 
     <!-- header -->
@@ -157,7 +165,7 @@ if($bsmValues[0]->basic != ''){ //inclusive basic
                 <div class="print_quo_detail_block">
                   <i class="fa fa-tags" aria-hidden="true"></i><br>
                   <span>PRICE</span><br>
-                  <?=  number_format($net_amount, 2) ?><br>
+                  <?=  number_format(($net_amount+$tcs_tax), 2) ?><br>
                 </div>
               </li>
             </ul>
@@ -683,14 +691,24 @@ if($bsmValues[0]->basic != ''){ //inclusive basic
               <li class="col-md-6 mg_tp_10 mg_bt_10"><span>FLIGHT AMOUNT : </span><?php echo number_format($package_booking_info['total_plane_expense'],2); ?></li>
               <li class="col-md-6 mg_tp_10 mg_bt_10"><span>TAX AMOUNT : </span><?php echo $tax_show; ?></li>
             </ul>
+            
             <ul class="main_block no-pad text-right noType">
               <li class="col-md-6 mg_tp_10 mg_bt_10"><span>CRUISE AMOUNT : </span><?php echo number_format($package_booking_info['total_cruise_expense'],2); ?></li>
-              <li class="col-md-6 mg_tp_10 mg_bt_10"><span>NET AMOUNT : </span><?php echo number_format($net_amount,2); ?></li>
+              <li class="col-md-6 mg_tp_10 mg_bt_10"><span>NET AMOUNT : </span><?php echo number_format($net_amount+$tcs_tax,2); ?></li>
             </ul>
             <ul class="main_block no-pad text-right noType">
               <li class="col-md-6 mg_tp_10 mg_bt_10"><span>DUE DATE : </span><?php echo ($package_booking_info['due_date'] !='1970-01-01')?get_date_user($package_booking_info['due_date']): get_date_user($package_booking_info['tour_to_date']); ?></li>
               <li class="col-md-6 mg_tp_10 mg_bt_10"><span>CREDIT CARD CHARGE : </span><?= number_format($charge,2)?></li>
             </ul>
+            <?php
+               if($tour_type == "International"){
+            ?>
+            <ul class="main_block no-pad text-right noType">
+              <li class="col-md-6 mg_tp_10 mg_bt_10"><span>TCS(5%) : </span><?php echo number_format($tcs_tax,2); ?></li>
+            </ul>
+            <?php
+            }
+            ?>
           </div>
         </div>
       </div>

@@ -102,7 +102,14 @@ if($bsmValues[0]->basic != ''){ //inclusive markup
 // $net_amount = $_GET['net_amount'];
 ($_GET['total_paid']=="")?$total_paid = 0:$total_paid = $_GET['total_paid'];
 
-$total_balance = $net_total - $total_paid;
+if($service_name =='Package Invoice' && $tour_type == "International"){
+  $tcs_tax = $net_total * (0.05);
+}
+else{
+  $tcs_tax = 0;
+}
+
+$total_balance = ($net_total+$tcs_tax) - $total_paid;
 $total_paid += $charge;
 $amount_in_word = $amount_to_word->convert_number_to_words($net_total);
 
@@ -164,14 +171,7 @@ if($app_invoice_format == "Advance"){include "../headers/advance_header_html.php
     </div>
   </div>
 </section>
-<?php
-if($service_name =='Package Invoice' && $tour_type == "International"){
-  $tcs_tax = $net_total * (0.05);
-}
-else{
-  $tcs_tax = 0;
-}
-?>
+
 <section class="print_sec main_block">
 
 <!-- invoice_receipt_body_calculation -->

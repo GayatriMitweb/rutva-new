@@ -107,7 +107,7 @@
 					
 					<div class="col-sm-4 col-xs-12 mg_bt_10">
 						<small>&nbsp;</small>
-						<input type="text" id="other_taxes" name="other_taxes" placeholder="Airlines Conveniency" title="Airlines Conveniency" onchange="calculate_total_amount(this.id);validate_balance(this.id)" value="<?= $sq_ticket['other_taxes'] ?>" >
+						<input type="text" id="other_taxes" name="other_taxes" placeholder="Airline convenience fee" title="Airline convenience fee" onchange="calculate_total_amount(this.id);validate_balance(this.id)" value="<?= $sq_ticket['other_taxes'] ?>" >
 
 					</div>
 
